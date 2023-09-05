@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Include the SF Pro font from a remote source (Google Fonts) */
+    @import url('https://fonts.googleapis.com/css2?family=SF+Pro&display=swap');
+
+    /* Set the font-family to SF Pro for the entire page */
+    body {
+      font-family: 'SF Pro', sans-serif;
+      margin: 20px;
+      padding: 0;
+    }
+    header {
+      background-color: #3498db;
+      padding: 10px 0;
+      text-align: center;
+    }
+    /* Style for the tab buttons */
+    .tab-button {
+      cursor: pointer;
+      margin-right: 10px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .tab-button:hover {
+      background-color: #2980b9;
+    }
+
+    /* Style for the tabs */
+    .tab-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .tab {
+      display: none;
+      background-color: #f5f5f5;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+  </style>
+</head>
+
+  <title>Cotton Premiums Discounts</title>
+  <script src="https://cdn.jsdelivr.net/npm/aws-sdk@2.1314.0/dist/aws-sdk.min.js"></script>
+  <script>
+    // Configure AWS credentials
+    AWS.config.update({
+      accessKeyId: 'YOUR_ACCESS_KEY',
+      secretAccessKey: 'YOUR_SECRET_KEY',
+      region: 'YOUR_REGION'
+    });
+
+    const docClient = new AWS.DynamoDB.DocumentClient();
+    const tableName = 'YourTableName';
+
+    function handleFileSelect(evt) {
+      const file = evt.target.files[0];
+      const reader = new FileReader();
+
+      reader.onload = function(event) {
+        const contents = event.target.result;
+        const lines = contents.split('\n');
+        const processedData = [];
+
+        for (let i = 0; i < lines.length; i++) {
+          const cells = lines[i].split(',');
+          processedData.push(cells.map(cell => cell.trim()));
+        }
+
+        // LRR is 18th column
+        const lrrColumn = processedData.map(row => row[17]).join('\n');
+
+        const downloadLink = document.getElementById('downloadLink');
+        const blob = new Blob([lrrColumn], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        downloadLink.href = url;
+        downloadLink.download = 'lrr.csv';
+        downloadLink.style.display = 'block';
+
+        // Upload to DynamoDB
+        for (let i = 0; i < processedData.length; i++) {
+          const entry = {
+            id: processedData[i][0],
+            name: processedData[i][1],
+            // Add more attributes based on your table's schema
+          };
+
+          const params = {
+            TableName: tableName,
+            Item: entry
+          };
+
+          docClient.put(params, function(err, data) {
+            if (err) {
+              console.error('Error uploading entry: ', err);
+            } else {
+              console.log('Entry uploaded successfully: ', entry);
+            }
+          });
+        }
+      };
+
+      reader.readAsText(file);
+    }
+  </script>
+<body>
+
+  <h1>Acotex Internal Information Cloud</h1>
+
+  <!-- Tab buttons -->
+  <button class="tab-button" onclick="openTab('tab1')">Map</button>
+  <button class="tab-button" onclick="openTab('tab2')">File Upload</button>
+
+  <!-- Tab content -->
+  <div id="tab1" class="tab">
+    <!-- Content for Tab 1 -->
+    <!-- <h2>Tab 1 Content</h2> -->
+    <!-- Add your content for Tab 1 here -->
+    
+    <div style="min-height:473px"><script type="text/javascript" defer src="https://datawrapper.dwcdn.net/3GOID/embed.js?v=4" charset="utf-8"></script><noscript><img src="https://datawrapper.dwcdn.net/3GOID/full.png" alt="" /></noscript></div>
+
+  </div>
+
+  <div id="tab2" class="tab">
+    <!-- Content for Tab 2 -->
+    <h2>Cotton Premiums Discounts</h2>
+    <p>Upload CSV file</p>
+    <!-- Add your content for Tab 2 here -->
+  
+  <input type="file" id="csvFile" accept=".csv" onchange="handleFileSelect(event)">
+  <a id="downloadLink" style="display: none;">Download LRR (.csv)</a>
+</div>
+  
+  <script>
+    function openTab(tabId) {
+      const tabs = document.querySelectorAll('.tab');
+      tabs.forEach(tab => {
+        tab.style.display = 'none';
+      });
+
+      const tabToOpen = document.getElementById(tabId);
+      if (tabToOpen) {
+        tabToOpen.style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>
