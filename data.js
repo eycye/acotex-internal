@@ -1,4 +1,6 @@
-const CCLSMap = {
+const BASE_PRICE = 0.5200;
+
+const CCLSMap2023 = {
     '11': {
         '1': [-380, -250, -75, 160, 335, 510, 580, 590],
         '2': [-380, -250, -75, 160, 335, 510, 580, 590],
@@ -252,7 +254,7 @@ const CCLSMap = {
     // Add more data as needed
 };
 
-const extMap = {
+const extMap2023 = {
     '0': 0,
     '01': -195,
     '02': -685,
@@ -267,59 +269,62 @@ const extMap = {
 
 // Micronaire
 
-var micMap = new TreeMap();
+var micMap2023 = new TreeMap();
 
-micMap.put(0,-1835);
-micMap.put(25,-1360);
-micMap.put(27,-925);
-micMap.put(30,-625);
-micMap.put(33,-460);
-micMap.put(35,0);
-micMap.put(37,10);
-micMap.put(43,0);
-micMap.put(50,-240);
-micMap.put(53,-390);
+micMap2023.put(0,-1835);
+micMap2023.put(25,-1360);
+micMap2023.put(27,-925);
+micMap2023.put(30,-625);
+micMap2023.put(33,-460);
+micMap2023.put(35,0);
+micMap2023.put(37,10);
+micMap2023.put(43,0);
+micMap2023.put(50,-240);
+micMap2023.put(53,-390);
 
 // Fiber Strength
-var strengthMap = new TreeMap();
+var strengthMap2023 = new TreeMap();
 
-strengthMap.put(0,-700);
-strengthMap.put(18,-645);
-strengthMap.put(19,-645);
-strengthMap.put(20,-640);
-strengthMap.put(21,-635);
-strengthMap.put(22,-600);
-strengthMap.put(23,-585);
-strengthMap.put(24,-570);
-strengthMap.put(25,-515);
-strengthMap.put(26,0);
-strengthMap.put(27,0);
-strengthMap.put(28,0);
-strengthMap.put(29,5);
-strengthMap.put(30,20);
-strengthMap.put(31,35);
-strengthMap.put(33,50);
-
-// [0.0, 18.0, 19.0 ... 31.0, 32.0, 33.0]
-strengthList = [-700,-645,-645,-640,-635,-600,-585,-570,-515,0,0,0,5,20,35,35,50]
+strengthMap2023.put(0,-700);
+strengthMap2023.put(18,-645);
+strengthMap2023.put(19,-645);
+strengthMap2023.put(20,-640);
+strengthMap2023.put(21,-635);
+strengthMap2023.put(22,-600);
+strengthMap2023.put(23,-585);
+strengthMap2023.put(24,-570);
+strengthMap2023.put(25,-515);
+strengthMap2023.put(26,0);
+strengthMap2023.put(27,0);
+strengthMap2023.put(28,0);
+strengthMap2023.put(29,5);
+strengthMap2023.put(30,20);
+strengthMap2023.put(31,35);
+strengthMap2023.put(33,50);
 
 // Length Uniformity
-var uniMap = new TreeMap();
+var uniMap2023 = new TreeMap();
 
-uniMap.put(0,-110);
-uniMap.put(78,-60);
-uniMap.put(79,-50);
-uniMap.put(80,0);
-uniMap.put(81,0);
-uniMap.put(82,5);
-uniMap.put(83,10);
-uniMap.put(84,15);
-uniMap.put(85,20);
-uniMap.put(86,25);
+uniMap2023.put(0,-110);
+uniMap2023.put(78,-60);
+uniMap2023.put(79,-50);
+uniMap2023.put(80,0);
+uniMap2023.put(81,0);
+uniMap2023.put(82,5);
+uniMap2023.put(83,10);
+uniMap2023.put(84,15);
+uniMap2023.put(85,20);
+uniMap2023.put(86,25);
 
-// [0.0, 78.0, 79.0 ... 86.0]
-uniList = [-110,-60,-50,0,0,5,10,15,20,25]
+const argIndicesMap = new Map();
+const argNames = ["C1","C2","Leaf","Stpl","Mic","Ext","Str","Uni"];
 
+// C1, C2, Leaf, Stpl, Mic, Ext, Strength, Uni
+function setArgIndices(headerRow) {
+    const headerRowArgs = headerRow.split(',');
+    const cleanArgs = headerRowArgs.map(arg => arg.replace(/[^a-zA-Z0-9]/g, ''));
+    argNames.map(arg => argIndicesMap.set(arg, cleanArgs.indexOf(arg)));
+}
 
 function stringFloatRD(string) {
     return Math.floor(parseFloat(string));
@@ -336,56 +341,58 @@ function queryCCLS(C1, C2, Leaf, Stpl) {
         return -4000;
     }
     const color = C1+C2;
-    if (color in CCLSMap && CCLSMap[color] && CCLSMap[color][Leaf] && Array.isArray(CCLSMap[color][Leaf])) {
-        return CCLSMap[color][Leaf][stplIndex(Stpl)];
+    if (color in CCLSMap2023 && CCLSMap2023[color] && CCLSMap2023[color][Leaf] && Array.isArray(CCLSMap2023[color][Leaf])) {
+        return CCLSMap2023[color][Leaf][stplIndex(Stpl)];
     }
     return null;
 }
 
 function queryExtraneous(Ext) {
-    if (Ext in extMap) {
-        return extMap[Ext];
+    if (Ext in extMap2023) {
+        return extMap2023[Ext];
     } else if (Ext.length > 1) {
-        return extMap['*'+Ext[1]];
+        return extMap2023['*'+Ext[1]];
     }
     return null;
 }
 
 function queryMicronaire(Mic) {
     const micKey = stringFloatRD(Mic)
-    return micMap.floorKey(micKey);
+    return micMap2023.floorKey(micKey);
 }
 
 function queryStrength(Strength) {
     const strengthKey = stringFloatRD(Strength)
-    return strengthMap.floorKey(strengthKey);
+    return strengthMap2023.floorKey(strengthKey);
 }
 
 function queryUniform(Uni) {
     const uniKey = stringFloatRD(Uni)
-    return uniMap.floorKey(uniKey);
+    return uniMap2023.floorKey(uniKey);
 }
 
-function queryFinalDiscount(row) {
-    // C1, C2, Leaf, Stpl, Mic, Ext, Strength, Uni
-    // index: 7,8,9,10,12,13,14,19
-    const [C1, C2, Leaf, Stpl, Mic, Ext, Strength, Uni] = [row[7],row[8],row[9],row[10],row[12],row[13],row[14],row[19]];
-    console.log("args"+C1+C2+Leaf+Stpl+Mic+Ext+Strength+Uni);
+function queryFinalPrices(row) {
+    
+    if (row===null) return null;
+    const [C1, C2, Leaf, Stpl, Mic, Ext, Strength, Uni] = [row[argIndicesMap.get("C1")],row[argIndicesMap.get("C2")],row[argIndicesMap.get("Leaf")],row[argIndicesMap.get("Stpl")],row[argIndicesMap.get("Mic")],row[argIndicesMap.get("Ext")],row[argIndicesMap.get("Str")],row[argIndicesMap.get("Uni")]];
+    if ([C1, C2, Leaf, Stpl, Mic, Ext, Strength, Uni].some(item => item === null)) return null;
+    console.log(`Arguments: colors=${C1+C2}, leaf=${Leaf}, stpl=${Stpl}, mic=${Mic}, ext=${Ext}, strength=${Strength}, uniformity=${Uni}`);
     // Main Chart: Colors (Grade), Leaf, and Staple
-    var finalDiscount = queryCCLS(C1, C2, Leaf, Stpl);
-    if (finalDiscount===null) return null;  // Return null if data doesn't exist
+    var finalPrice = BASE_PRICE * 10000;
+    const CCLS = queryCCLS(C1, C2, Leaf, Stpl);
+    if (CCLS!==null) {finalPrice+=CCLS;}  // Return null if data doesn't exist
 
     const extraneous = queryExtraneous(Ext);
-    if (extraneous!==null) {finalDiscount+=extraneous;}
+    if (extraneous!==null) {finalPrice+=extraneous;}
 
     const micronaire = queryMicronaire(Mic);
-    if (micronaire!==null) {finalDiscount+=micronaire;}
+    if (micronaire!==null) {finalPrice+=micronaire;}
 
     const strength = queryStrength(Strength);
-    if (strength!==null) {finalDiscount+=strength;}
+    if (strength!==null) {finalPrice+=strength;}
 
     const uniform = queryUniform(Uni);
-    if (uniform!==null) {finalDiscount+=uniform;}
-    console.log("lookhere"+finalDiscount);
-    return finalDiscount;
+    if (uniform!==null) {finalPrice+=uniform;}
+    console.log("Final price: "+finalPrice);
+    return finalPrice/10000;
 }
