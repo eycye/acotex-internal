@@ -1,0 +1,731 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -100.904166,37.060876 ]
+     },
+     "properties": {
+     "Company":"PCCA",
+     "Code":"385000",
+     "City":"Liberal",
+     "State":"KS",
+     "Address":"6259 Road J, Liberal, KS 67901",
+     "Capacity":40000,
+     "Capacity100K":0.4,
+     "CrossedOut":"No",
+     "Storage":0.08,
+     "Compression":9.75,
+     "FreightPerBale":"22.5",
+     "FreightDallas":"0.0475",
+     "Website":"https://services.pcca.com"
+     }
+   },
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -97.492891,37.519037 ]
+     },
+     "properties": {
+     "Company":"PCCA",
+     "Code":"385001",
+     "City":"Clearwater",
+     "State":"KS",
+     "Address":"13131 W. 95th St. South, Clearwater, KS 67026",
+     "Capacity":40000,
+     "Capacity100K":0.4,
+     "CrossedOut":"No",
+     "Storage":0.08,
+     "Compression":9.75,
+     "FreightPerBale":"22.5",
+     "FreightDallas":"0.0475",
+     "Website":"https://services.pcca.com"
+     }
+   },
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -103.3424466,32.9460766 ]
+     },
+     "properties": {
+     "Company":"PCCA",
+     "Code":"538013",
+     "City":"Lovington",
+     "State":"NM",
+     "Address":"1500 S. Commercial St., Lovington, NM 88260",
+     "Capacity":7500,
+     "Capacity100K":0.075,
+     "CrossedOut":"No",
+     "Storage":0.08,
+     "Compression":9.75,
+     "FreightPerBale":"",
+     "FreightDallas":"",
+     "Website":"https://services.pcca.com"
+     }
+   },
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -99.321024,34.647405 ]
+     },
+     "properties": {
+     "Company":"PCCA",
+     "Code":"631020",
+     "City":"Altus",
+     "State":"OK",
+     "Address":"20284 East County Road 165, Altus, OK 73521",
+     "Capacity":300500,
+     "Capacity100K":3.005,
+     "CrossedOut":"No",
+     "Storage":0.08,
+     "Compression":9.75,
+     "FreightPerBale":"15",
+     "FreightDallas":"0.0315",
+     "Website":"https://services.pcca.com"
+     }
+   },
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -101.500446,32.283477 ]
+     },
+     "properties": {
+     "Company":"PCCA",
+     "Code":"829537",
+     "City":"Big Spring",
+     "State":"TX",
+     "Address":"500 West Leatherwood, Big Spring, TX 79720",
+     "Capacity":85000,
+     "Capacity100K":0.85,
+     "CrossedOut":"No",
+     "Storage":0.08,
+     "Compression":9.75,
+     "FreightPerBale":"17",
+     "FreightDallas":"0.0355",
+     "Website":"https://services.pcca.com"
+     }
+   },
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -99.854024,33.181 ]
+     },
+     "properties": {
+     "Company":"PCCA",
+     "Code":"925012",
+     "City":"Rule",
+     "State":"TX",
+     "Address":"5 Warehouse Road, Rule, TX 79547",
+     "Capacity":105500,
+     "Capacity100K":1.055,
+     "CrossedOut":"No",
+     "Storage":0.08,
+     "Compression":9.75,
+     "FreightPerBale":"15",
+     "FreightDallas":"0.0315",
+     "Website":"https://services.pcca.com"
+     }
+   },
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -100.403655,32.460328 ]
+     },
+     "properties": {
+     "Company":"PCCA",
+     "Code":"937530",
+     "City":"Sweetwater",
+     "State":"TX",
+     "Address":"303 County Road 142, West Alabama St., Sweetwater, TX 79556",
+     "Capacity":194000,
+     "Capacity100K":1.94,
+     "CrossedOut":"No",
+     "Storage":0.08,
+     "Compression":9.75,
+     "FreightPerBale":"15.5",
+     "FreightDallas":"0.0325",
+     "Website":"https://services.pcca.com"
+     }
+   },
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -101.803507,33.5486094 ]
+     },
+     "properties": {
+     "Company":"FCC",
+     "Code":"886506/17/12/09/20",
+     "City":"Lubbock",
+     "State":"TX",
+     "Address":"3891 Southeast Dr, Lubbock, TX 79408",
+     "Capacity":870000,
+     "Capacity100K":8.7,
+     "CrossedOut":"No",
+     "Storage":0.075,
+     "Compression":9.75,
+     "FreightPerBale":"18",
+     "FreightDallas":"0.0375",
+     "Website":"https://farmerscompress.com"
+     }
+   },
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -101.644758,34.18392 ]
+     },
+     "properties": {
+     "Company":"FCC",
+     "Code":"911525,911520",
+     "City":"Plainview",
+     "State":"TX",
+     "Address":"2590 CR 95, Plainview, TX",
+     "Capacity":397800,
+     "Capacity100K":3.978,
+     "CrossedOut":"No",
+     "Storage":0.075,
+     "Compression":9.75,
+     "FreightPerBale":"18",
+     "FreightDallas":"0.0375",
+     "Website":"https://farmerscompress.com"
+     }
+   },
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -102.3627079,33.592044 ]
+     },
+     "properties": {
+     "Company":"FCC",
+     "Code":"882008",
+     "City":"Levelland",
+     "State":"TX",
+     "Address":"500 Maple St., Levelland, TX",
+     "Capacity":196000,
+     "Capacity100K":1.96,
+     "CrossedOut":"No",
+     "Storage":0.075,
+     "Compression":9.75,
+     "FreightPerBale":"20",
+     "FreightDallas":"0.0425",
+     "Website":"https://farmerscompress.com"
+     }
+   },
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -101.801159,32.131728 ]
+     },
+     "properties": {
+     "Company":"FCC",
+     "Code":"935002",
+     "City":"Stanton",
+     "State":"TX",
+     "Address":"4000 CR B3601, Stanton, TX",
+     "Capacity":111000,
+     "Capacity100K":1.11,
+     "CrossedOut":"No",
+     "Storage":0.075,
+     "Compression":9.75,
+     "FreightPerBale":"18",
+     "FreightDallas":"0.0375",
+     "Website":"https://farmerscompress.com"
+     }
+   },
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -101.707026,35.184777 ]
+     },
+     "properties": {
+     "Company":"FCC",
+     "Code":"810001",
+     "City":"Amarillo",
+     "State":"TX",
+     "Address":"4218 South FM 1258 Pullman Rd., Amarillo, TX",
+     "Capacity":82000,
+     "Capacity100K":0.82,
+     "CrossedOut":"No",
+     "Storage":0.075,
+     "Compression":9.75,
+     "FreightPerBale":"19",
+     "FreightDallas":"0.04",
+     "Website":"https://farmerscompress.com"
+     }
+   },
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -102.520693,34.065151 ]
+     },
+     "properties": {
+     "Company":"FCC",
+     "Code":"936006",
+     "City":"Sudan",
+     "State":"TX",
+     "Address":"700 West Hwy. 84, Sudan, TX",
+     "Capacity":138500,
+     "Capacity100K":1.385,
+     "CrossedOut":"No",
+     "Storage":0.075,
+     "Compression":9.75,
+     "FreightPerBale":"20",
+     "FreightDallas":"0.0425",
+     "Website":"https://farmerscompress.com"
+     }
+   },
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -101.772258,35.293191 ]
+     },
+     "properties": {
+     "Company":"Amarillo Cotton Whs",
+     "Code":"810002,810003,810535,810538",
+     "City":"Amarillo",
+     "State":"TX",
+     "Address":"5001 FM1912, Amarillo, TX 79108",
+     "Capacity":440000,
+     "Capacity100K":4.4,
+     "CrossedOut":"No",
+     "Storage":0.07,
+     "Compression":9.5,
+     "FreightPerBale":"19",
+     "FreightDallas":"0.04",
+     "Website":"http://www.amacotton.com"
+     }
+   },
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -101.7704781,34.5360311 ]
+     },
+     "properties": {
+     "Company":"Amarillo Cotton Whs",
+     "Code":"944708,913055",
+     "City":"Tulia",
+     "State":"TX",
+     "Address":"1203 Sw 2nd St, Tulia, TX 79088",
+     "Capacity":171000,
+     "Capacity100K":1.71,
+     "CrossedOut":"No",
+     "Storage":0.07,
+     "Compression":9.5,
+     "FreightPerBale":"19",
+     "FreightDallas":"0.04",
+     "Website":"http://www.amacotton.com"
+     }
+   },
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -102.2769717,33.1887189 ]
+     },
+     "properties": {
+     "Company":"Trinity Company",
+     "Code":"828031",
+     "City":"Brownfield",
+     "State":"TX",
+     "Address":"500 West Ross, Brownfield, TX 79316",
+     "Capacity":96000,
+     "Capacity100K":0.96,
+     "CrossedOut":"No",
+     "Storage":0.08,
+     "Compression":10.75,
+     "FreightPerBale":"20",
+     "FreightDallas":"0.0425",
+     "Website":"https://trinitycotton.com"
+     }
+   },
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -101.946389,32.728549 ]
+     },
+     "properties": {
+     "Company":"Trinity Company",
+     "Code":"880533",
+     "City":"Lamesa",
+     "State":"TX",
+     "Address":"501 S. Akron, Lamesa, TX 79331",
+     "Capacity":80000,
+     "Capacity100K":0.8,
+     "CrossedOut":"No",
+     "Storage":0.08,
+     "Compression":10.75,
+     "FreightPerBale":"",
+     "FreightDallas":"",
+     "Website":"https://trinitycotton.com"
+     }
+   },
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -101.833776,32.964843 ]
+     },
+     "properties": {
+     "Company":"Trinity Company",
+     "Code":"904033",
+     "City":"O'Donnell",
+     "State":"TX",
+     "Address":"1200 West 8th, O’Donnell, TX 79351",
+     "Capacity":23870,
+     "Capacity100K":0.2387,
+     "CrossedOut":"No",
+     "Storage":0.08,
+     "Compression":10.75,
+     "FreightPerBale":"",
+     "FreightDallas":"",
+     "Website":"https://trinitycotton.com"
+     }
+   },
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -101.8409648,33.5725953 ]
+     },
+     "properties": {
+     "Company":"Trinity Company",
+     "Code":"886533",
+     "City":"Lubbock",
+     "State":"TX",
+     "Address":"2411 Avenue E, Lubbock, TX 79404",
+     "Capacity":30000,
+     "Capacity100K":0.3,
+     "CrossedOut":"Yes",
+     "Storage":0.08,
+     "Compression":10.75,
+     "FreightPerBale":"18",
+     "FreightDallas":"0.0375",
+     "Website":"https://trinitycotton.com"
+     }
+   },
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -101.3922519,33.6793918 ]
+     },
+     "properties": {
+     "Company":"Trinity Company",
+     "Code":"916501",
+     "City":"Ralls",
+     "State":"TX",
+     "Address":"419 Avenue A, Ralls, TX 79357-0200",
+     "Capacity":60000,
+     "Capacity100K":0.6,
+     "CrossedOut":"No",
+     "Storage":0.08,
+     "Compression":10.75,
+     "FreightPerBale":"",
+     "FreightDallas":"",
+     "Website":"https://trinitycotton.com"
+     }
+   },
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -102.5614718,32.9386373 ]
+     },
+     "properties": {
+     "Company":"Trinity Company",
+     "Code":"928532",
+     "City":"Seagraves",
+     "State":"TX",
+     "Address":"615 Industrial Avenue, Seagraves, TX 79359-0786",
+     "Capacity":105400,
+     "Capacity100K":1.054,
+     "CrossedOut":"No",
+     "Storage":0.08,
+     "Compression":10.75,
+     "FreightPerBale":"20",
+     "FreightDallas":"0.0425",
+     "Website":"https://trinitycotton.com"
+     }
+   },
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -101.788953,33.1673752 ]
+     },
+     "properties": {
+     "Company":"Trinity Company",
+     "Code":"939033",
+     "City":"Tahoka",
+     "State":"TX",
+     "Address":"2000 Ave. D, Tahoka, TX 79373",
+     "Capacity":40000,
+     "Capacity100K":0.4,
+     "CrossedOut":"No",
+     "Storage":0.08,
+     "Compression":10.75,
+     "FreightPerBale":"",
+     "FreightDallas":"",
+     "Website":"https://trinitycotton.com"
+     }
+   },
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -101.7295617,34.144194 ]
+     },
+     "properties": {
+     "Company":"Panhandle Compress",
+     "Code":"911510",
+     "City":"Plainview",
+     "State":"TX",
+     "Address":"1163 South Business I-27, P.O. Box 966, Plainview, Texas 79073",
+     "Capacity":24000,
+     "Capacity100K":0.24,
+     "CrossedOut":"No",
+     "Storage":0.07,
+     "Compression":9.5,
+     "FreightPerBale":"18",
+     "FreightDallas":"0.0375",
+     "Website":"https://www.panhandlecompress.com"
+     }
+   },
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -101.368654,33.187181 ]
+     },
+     "properties": {
+     "Company":"Panhandle Compress",
+     "Code":"913030",
+     "City":"Post",
+     "State":"TX",
+     "Address":"700 Avenue C, P.O. Box 550, Post, Texas 79356",
+     "Capacity":20000,
+     "Capacity100K":0.2,
+     "CrossedOut":"No",
+     "Storage":0.07,
+     "Compression":9.5,
+     "FreightPerBale":"",
+     "FreightDallas":"",
+     "Website":"https://www.panhandlecompress.com"
+     }
+   },
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -99.753427,34.301319 ]
+     },
+     "properties": {
+     "Company":"Panhandle Compress",
+     "Code":"914510",
+     "City":"Quanah",
+     "State":"TX",
+     "Address":"1410 W. Second Street, P.O. Box 478, Quanah, Texas 79252",
+     "Capacity":45000,
+     "Capacity100K":0.45,
+     "CrossedOut":"No",
+     "Storage":0.07,
+     "Compression":9.5,
+     "FreightPerBale":"15.5",
+     "FreightDallas":"0.0325",
+     "Website":"https://www.panhandlecompress.com"
+     }
+   },
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -100.301733,34.023415 ]
+     },
+     "properties": {
+     "Company":"Panhandle Compress",
+     "Code":"906015",
+     "City":"Paducah",
+     "State":"TX",
+     "Address":"101 9th Street, P.O. Box 760, Paducah, Texas 79248",
+     "Capacity":44000,
+     "Capacity100K":0.44,
+     "CrossedOut":"No",
+     "Storage":0.07,
+     "Compression":9.5,
+     "FreightPerBale":"",
+     "FreightDallas":"",
+     "Website":"https://www.panhandlecompress.com"
+     }
+   },
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -99.9532007,31.7345813 ]
+     },
+     "properties": {
+     "Company":"BallingerCottonWarehouse",
+     "Code":"820010",
+     "City":"Ballinger",
+     "State":"TX",
+     "Address":"113 North 13th Street Ballinger, TX 76821",
+     "Capacity":75000,
+     "Capacity100K":0.75,
+     "CrossedOut":"No",
+     "Storage":0.08,
+     "Compression":9.75,
+     "FreightPerBale":"",
+     "FreightDallas":"",
+     "Website":""
+     }
+   },
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -100.4119689,31.4885135 ]
+     },
+     "properties": {
+     "Company":"BallingerCottonWarehouse",
+     "Code":"926005",
+     "City":"San Angelo",
+     "State":"TX",
+     "Address":"1701 N Bell St, San Angelo, TX 76903",
+     "Capacity":19600,
+     "Capacity100K":0.196,
+     "CrossedOut":"No",
+     "Storage":0.08,
+     "Compression":9.75,
+     "FreightPerBale":"",
+     "FreightDallas":"",
+     "Website":""
+     }
+   },
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -100.924887,32.747517 ]
+     },
+     "properties": {
+     "Company":"BallingerCottonWarehouse",
+     "Code":"937534",
+     "City":"Snyder",
+     "State":"TX",
+     "Address":"2100 Kings Hwy, Snyder, TX 79549",
+     "Capacity":18500,
+     "Capacity100K":0.185,
+     "CrossedOut":"No",
+     "Storage":0.08,
+     "Compression":9.75,
+     "FreightPerBale":"",
+     "FreightDallas":"",
+     "Website":""
+     }
+   },
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -102.915069,32.659895 ]
+     },
+     "properties": {
+     "Company":"Oasis Warehouse",
+     "Code":"937535",
+     "City":"Seminole",
+     "State":"TX",
+     "Address":"816 Co Rd 331, Seminole, TX 79360",
+     "Capacity":145500,
+     "Capacity100K":1.455,
+     "CrossedOut":"No",
+     "Storage":0.085,
+     "Compression":9.75,
+     "FreightPerBale":"",
+     "FreightDallas":"",
+     "Website":""
+     }
+   },
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -99.274772,34.160056 ]
+     },
+     "properties": {
+     "Company":"Vernon",
+     "Code":"947505",
+     "City":"Vernon",
+     "State":"TX",
+     "Address":"1000 US Highway 287 E, Vernon, TX  76385",
+     "Capacity":17540,
+     "Capacity100K":0.1754,
+     "CrossedOut":"No",
+     "Storage":2.1,
+     "Compression":9.75,
+     "FreightPerBale":"",
+     "FreightDallas":"",
+     "Website":""
+     }
+   },
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -99.811844,32.939464 ]
+     },
+     "properties": {
+     "Company":"TxCompressWhs",
+     "Code":"867017",
+     "City":"Stamford",
+     "State":"TX",
+     "Address":"600 S Occident St, Stamford, TX 79553",
+     "Capacity":16630,
+     "Capacity100K":0.1663,
+     "CrossedOut":"No",
+     "Storage":2.25,
+     "Compression":10,
+     "FreightPerBale":"",
+     "FreightDallas":"",
+     "Website":""
+     }
+   },
+   {
+     "type": "Feature",
+     "geometry": {
+        "type": "Point",
+        "coordinates":  [ -101.923114,33.943382 ]
+     },
+     "properties": {
+     "Company":"CityGinCottonWhs",
+     "Code":"810537",
+     "City":"Abernathy",
+     "State":"TX",
+     "Address":"1455 County Road 315; Abernathy, TX 79311",
+     "Capacity":40000,
+     "Capacity100K":0.4,
+     "CrossedOut":"No",
+     "Storage":2.1,
+     "Compression":9.5,
+     "FreightPerBale":"",
+     "FreightDallas":"",
+     "Website":""
+     }
+   }
+ ]
+ }

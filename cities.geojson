@@ -1,0 +1,25 @@
+{
+   "type": "FeatureCollection",
+   "features": [
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.808891,32.779167 ]
+    },
+    "properties": {
+    "City":"Dallas"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.358421,29.749907 ]
+    },
+    "properties": {
+    "City":"Houston"
+    }
+  }
+]
+}

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Cotton Warehouses, West Texas</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=SF+Pro&display=swap');
+
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+</head>
+<body>
+<style>
+    .popup-content {
+        max-width: 400px; /* Adjust the width as needed */
+        padding: 15px;
+        background-color: #fff;
+        border: 3px solid #353b5c;
+        border-radius: 8px;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    }
+    .popup-content h3 {
+        margin-bottom: 9px;
+        color: #293847;
+    }
+
+    .popup-content ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .popup-content li {
+        margin-bottom: 5px;
+    }
+
+    .popup-content li strong {
+        display: inline-block;
+        width: 80px; /* Adjust as needed */
+        font-weight: bold;
+    }
+    .legend {
+        background-color: #fff;
+        border-radius: 3px;
+        bottom: 30px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        font-family: 'SF Pro', sans-serif;
+        padding: 10px;
+        position: absolute;
+        right: 10px;
+        z-index: 1;
+    }
+    .legend h4 {
+        margin: 0 0 10px;
+    }
+        
+    .legend div span {
+        border-radius: 50%;
+        display: inline-block;
+        height: 10px;
+        margin-right: 5px;
+        width: 10px;
+    }
+    .legend-key {
+        display: inline-block;
+        border-radius: 20%;
+        width: 10px;
+        height: 10px;
+        margin-right: 5px;
+    }
+    .legend-item {
+        cursor: pointer;
+        opacity: 1;
+        transition: opacity 0.3s ease;
+    }
+
+    .legend-item.inactive {
+        opacity: 0.2;
+    }
+    .map-overlay {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background: #fff;
+        margin-right: 20px;
+        font-family: 'SF Pro', sans-serif;
+        overflow: auto;
+        border-radius: 3px;
+    }
+    #color-legend {
+        opacity: 0.85;
+    }
+    #features {
+        top: 0;
+        height: 130px;
+        margin-top: 20px;
+        width: 350px;
+        opacity: 0.8;
+    }
+    #features h1 {
+        line-height: 0.5;
+        margin-left: 15px; /* Adjust the left margin as needed */
+    }
+    #features h3 {
+        line-height: 0.5;
+        margin-left: 15px; /* Adjust the left margin as needed */
+    }
+    #features p {
+        line-height: 1;
+        margin-left: 15px; /* Adjust the left margin as needed */
+    }
+</style>
+
+<div id="map"></div>
+
+<div id="features" class="map-overlay">
+    <h3>Cotton Warehouse Capacity</h3>
+    <div id="pd"><p>Hover over / Click on a warehouse!</p></div>
+</div>
+    
+<div id="color-legend" class="legend">
+    <h4>Company</h4>
+    <div class="legend-item" data-company="PCCA"><span style="background-color: red"></span>PCCA</div>
+    <div class="legend-item" data-company="FCC"><span style="background-color: #145c83"></span>FCC</div>
+    <div class="legend-item" data-company="Amarillo Cotton Whs"><span style="background-color: #eb760f"></span>Amarillo</div>
+    <div class="legend-item" data-company="Trinity Company"><span style="background-color: #33c441"></span>Trinity</div>
+    <div class="legend-item" data-company="Panhandle Compress"><span style="background-color: #953cdf"></span>Panhandle</div>
+    <div class="legend-item" data-company="BallingerCottonWarehouse"><span style="background-color: #eed322"></span>Ballinger</div>
+    <div class="legend-item" data-company="Other"><span style="background-color: grey"></span>Other</div>
+</div>
+
+<script>
+	// TO MAKE THE MAP APPEAR YOU MUST
+	// ADD YOUR ACCESS TOKEN FROM
+	// https://account.mapbox.com
+	mapboxgl.accessToken = 'pk.eyJ1IjoiZXljeWUiLCJhIjoiY2xtYm41YjM3MTBlbjN2bXNkM3JnaWgzdyJ9.9La4BJbd6ir5ojji4NwEuA';
+    const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+        style: 'mapbox://styles/eycye/cln8h3ixi007a01ps8y0ve358', // style URL
+        center: [-100, 34.5], // starting position [long, lat]
+        zoom: 5.5 // starting zoom
+    });
+    map.on('load', function () {
+        // map.resize();
+        // map.getCanvas().style.cursor = 'default';
+        
+        // Add a GeoJSON source
+        map.addSource('warehouses', {
+            type: 'geojson',
+            data: 'map.geojson' // Replace with your data source
+        });
+        
+        // Add a layer to display the warehouses
+        map.addLayer({
+            id: 'warehouses-layer',
+            type: 'circle',
+            source: 'warehouses',
+            // layout: {
+            //     'icon-image': 'marker-15', // You can replace 'marker-15' with your own custom marker image
+            //     'icon-allow-overlap': true,
+            // },
+            paint: {
+                'circle-color': [
+                    'match',
+                    ['get', 'Company'],
+                    'PCCA', 'red',
+                    'FCC', '#145c83',
+                    'Amarillo Cotton Whs', '#eb760f',
+                    'Trinity Company', '#33c441',
+                    'Panhandle Compress', '#953cdf',
+                    'BallingerCottonWarehouse', '#eed322',
+                    'grey' // default color for other companies
+                ],
+                'circle-radius': [
+                    'interpolate',
+                    ['linear'],
+                    ['to-number',['get', 'Capacity100K']], // Replace 'circleSize' with the actual property name
+                    0, 3, // Default circle size if the property is 0
+                    5, 20, // Circle size for the maximum value of the property (adjust as needed)
+                ],
+                'circle-opacity': 0.7,
+                'circle-stroke-width': 1,
+                'circle-stroke-color': '#001'            
+            }
+        });
+
+        // Add an image to use as a custom marker
+        map.loadImage(
+            './star.png',
+            (error, image) => {
+                if (error) throw error;
+                map.addImage('star', image);
+                // Add a GeoJSON source with 2 points
+                map.addSource('cities', {
+                    type: 'geojson',
+                    data: 'cities.geojson' // Replace with your data source
+                });
+
+                // Add a symbol layer
+                map.addLayer({
+                    'id': 'cities',
+                    'type': 'symbol',
+                    'source': 'cities',
+                    'layout': {
+                    'icon-image': 'star',
+                    'icon-size': 0.1,
+                    // get the title name from the source's "title" property
+                    'text-field': ['get', 'City'],
+                    'text-offset': [0,0.75],
+                    'text-anchor': 'top'
+                    }
+                });
+            }
+        );
+        map.on('mousemove', (event) => {
+            const states = map.queryRenderedFeatures(event.point, {
+                layers: ['warehouses-layer']
+            });
+            document.getElementById('pd').innerHTML = states.length
+            ? `<h1>${states[0].properties.Capacity/1000}K Bales </h1><p> <em>${states[0].properties.Company}</em> (${states[0].properties.City}, ${states[0].properties.State})</p>`
+            : `<p>Hover over / Click on a warehouse!</p>`;
+        });
+    });
+
+    map.on('click', 'warehouses-layer', function (e) {
+        const properties = e.features[0].properties;
+        const coordinates = e.features[0].geometry.coordinates.slice();
+        var description = `<h3>${properties.Company} (${properties.Code})</h3>
+                            <form id="popup-form">
+                           <ul>
+                               <li><strong>Location:</strong> ${properties.City}, ${properties.State}</li>
+                               <li><strong>Capacity (bales):</strong> <input type="text" id="capacity" style="width: 6em;" value="${properties.Capacity}"></li>
+                               <li><strong>Storage:</strong> $<input type="text" id="storage" style="width: 3em;" value="${properties.Storage}"></li>
+                               <li><strong>Compression:</strong> $<input type="text" id="compression" style="width: 3em;" value="${properties.Compression}"></li>
+                               <li><strong>Freight</strong> (per bale): $<input type="text" id="freightperbale" style="width: 4em;" value="${properties.FreightPerBale !== null ? properties.FreightPerBale : ' '}"></li>
+                               <li><strong>Freight to Dallas:</strong> $<input type="text" id="freightdallas" style="width: 4em;" value="${properties.FreightDallas !== null ? properties.FreightDallas : ' '}"></li>
+                               <li><strong>Address:</strong> ${properties.Address}</li>
+                           </ul>
+                           <button type="button" onclick="updatePopup()">Update</button>
+                       </form>`;
+        // Ensure that if the map is zoomed out, the pop-up displays at a readable size
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+
+        const popup = new mapboxgl.Popup()
+            .setLngLat(coordinates)
+            .setHTML(description)
+            .addTo(map);
+        
+            // Add event listener for when the popup is open
+        popup.on('open', () => {
+            // Calculate the height of the popup content
+            const popupContentHeight = popup._content.scrollHeight;
+
+            // Check if the popup extends beyond the bottom of the window
+            if (popupContentHeight > window.innerHeight - 40) {
+                // If so, adjust the popup's position to fit inside the window
+                const newLngLat = map.unproject(map.project(coordinates).add([0, -(popupContentHeight - window.innerHeight + 40)]));
+                popup.setLngLat(newLngLat);
+            }
+        });
+    });
+
+    // Change the cursor to a pointer when the mouse is over the warehouses layer
+    map.on('mouseenter', 'warehouses-layer', function () {
+        map.getCanvas().style.cursor = 'pointer';
+    });
+
+    const legendItems = document.querySelectorAll('.legend-item');
+
+    // Change it back to the default cursor when it leaves
+    map.on('mouseleave', 'warehouses-layer', function () {
+        map.getCanvas().style.cursor = '';
+        resetMapItems();
+        reactivateAllItems();
+    });
+
+    map.on('mouseover', 'warehouses-layer', (event) => {
+        const states = map.queryRenderedFeatures(event.point, {
+            layers: ['warehouses-layer']
+        });
+        deactivateNonCorrespondingItems(states[0].properties.Company);
+    });
+
+    function resetMapItems() {
+        const layers = map.getStyle().layers;
+        layers.forEach(layer => {
+            if (layer.id === 'warehouses-layer') {
+                const paint = map.getPaintProperty(layer.id, 'circle-opacity');
+                paint[1] = 0.7;
+                map.setPaintProperty(layer.id, 'circle-opacity', paint);
+            }
+        });
+    }
+
+    function deactivateNonCorrespondingItems(hoveredCompany) {
+        console.log(hoveredCompany);
+        var found = false;
+        legendItems.forEach(item => {
+            const company = item.getAttribute('data-company');
+            if (company !== hoveredCompany) {
+                item.classList.add('inactive');
+            } else {
+                found = true;
+            }
+        });
+        if (found === false) {
+            const lastLegendItemIndex = legendItems.length - 1;
+            const lastLegendItem = legendItems[lastLegendItemIndex];
+            lastLegendItem.classList.remove('inactive');
+        }
+    }
+
+    function reactivateAllItems() {
+        legendItems.forEach(item => {
+            item.classList.remove('inactive');
+        });
+    }
+
+    
+    function updatePopup() {
+        const form = document.getElementById('popup-form');
+        const capacity = form.querySelector('#capacity').value;
+        const storage = form.querySelector('#storage').value;
+        const compression = form.querySelector('#compression').value;
+        const freightperbale = form.querySelector('#freightperbale').value;
+        const freightdallas = form.querySelector('#freightdallas').value;
+        
+        // Update the popup content with the edited values
+        const updatedDescription = `<h3>${properties.Company} (${properties.Code})</h3>
+                                    <ul>
+                                        <li><strong>Location:</strong> ${properties.City}, ${properties.State}</li>
+                                        <li><strong>Capacity (bales):</strong> ${capacity}</li>
+                                        <li><strong>Storage:</strong> $${storage}</li>
+                                        <li><strong>Compression:</strong> $${compression}</li>
+                                        <li><strong>Freight</strong>(per bale): $${freightperbale}</li>
+                                        <li><strong>Freight to Dallas:</strong> $${freightdallas}</li>
+                                        <li><strong>Address:</strong> ${properties.Address}</li>
+                                    </ul>`;
+
+        // Set the updated HTML to the existing popup
+        popup.setHTML(updatedDescription);
+    }
+
+</script>
+
+</body>
+</html>
