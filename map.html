@@ -146,9 +146,7 @@ body { margin: 0; padding: 0; }
         zoom: 5.5 // starting zoom
     });
     map.on('load', function () {
-        // map.resize();
-        // map.getCanvas().style.cursor = 'default';
-        
+
         // Add a GeoJSON source
         map.addSource('warehouses', {
             type: 'geojson',
@@ -323,7 +321,6 @@ body { margin: 0; padding: 0; }
         });
     }
 
-    
     function updatePopup() {
         const form = document.getElementById('popup-form');
         const capacity = form.querySelector('#capacity').value;
@@ -347,6 +344,8 @@ body { margin: 0; padding: 0; }
         // Set the updated HTML to the existing popup
         popup.setHTML(updatedDescription);
     }
+
+    
 
 </script>
 
